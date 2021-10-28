@@ -24,6 +24,14 @@ stage("build & SonarQube analysis") {
               }
             }
           }
+        stage("testing") {
+                when {
+                   branch 'QA'
+                }
+                steps {
+                    sh 'echo hello' 
+                }
+        }
           
     }
 }
