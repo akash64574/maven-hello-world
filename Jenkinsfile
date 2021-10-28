@@ -40,8 +40,9 @@ stage("build & SonarQube analysis") {
         
      stage('Building our image') { 
             steps { 
-                script { 
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                script {
+                    sh 'docker build -f Dockerfile -t my-app .'
+                    //dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                 }
             } 
         }
