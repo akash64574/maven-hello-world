@@ -5,9 +5,10 @@ agent any
 stages {
 
 stage('SCM Checkout') {
-        // steps {
+        steps {
+                checkout scm
           //  git 'https://github.com/akash64574/maven-hello-world'
-// }
+}
 }
 
 stage('Build') {
