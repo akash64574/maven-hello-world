@@ -1,5 +1,10 @@
 
 pipeline {
+        environment { 
+        registry = "akash64574/myapp" 
+        registryCredential = 'dockerhub' 
+        dockerImage = '' 
+    }
 agent any
 
 stages {
@@ -32,6 +37,13 @@ stage("build & SonarQube analysis") {
                     sh 'echo hello' 
                 }
         }
-          
+        
+     stage('Building our image') { 
+            steps { 
+                script { 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                }
+            } 
+        }
     }
 }
